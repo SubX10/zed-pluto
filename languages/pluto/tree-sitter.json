@@ -1,0 +1,42 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "pluto",
+      "camelcase": "Pluto",
+      "title": "Pluto",
+      "scope": "source.pluto",
+      "file-types": ["pluto"],
+      "injection-regex": "^pluto$",
+      "class-name": "TreeSitterPluto",
+      "path": ".",
+      "grammar": "grammar.cjs"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "PLUTO DSL for space system procedures",
+    "authors": [
+      {
+        "name": "Subrat Mishra",
+        "email": "Subrat8225@gmail.com",
+        "url": ""
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/tree-sitter/tree-sitter-pluto",
+      "funding": ""
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "java": false,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true,
+    "zig": false
+  }
+}

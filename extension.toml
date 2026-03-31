@@ -1,0 +1,12 @@
+id = "pluto"
+name = "Pluto"
+description = "Syntax highlighting for the Pluto programming language"
+version = "0.0.1"
+schema_version = 1
+authors = ["Subrat Mishra <Subrat8225@gmail.com>"]
+repository = "https://github.com/SubX10/zed-pluto"
+[language.pluto]
+name = "PLUTO"
+grammar = "pluto"
+path = "languages/pluto"
+file_types = ["pluto"]

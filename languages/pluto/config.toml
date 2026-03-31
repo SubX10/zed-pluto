@@ -1,0 +1,5 @@
+name = "PLUTO"
+grammar = "pluto"
+
+path_suffixes = ["pluto"]
+line_comments = ["#"]

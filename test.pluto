@@ -1,0 +1,3 @@
+IF temp > 50 THEN
+  action()
+END
