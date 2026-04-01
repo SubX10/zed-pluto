@@ -1,3 +1,5 @@
+Developed as part of Google Summer of Code 2026 with the LibreCube Initiative.
+
 # Zed PLUTO Language Extension (Prototype)
 
 ## Overview
