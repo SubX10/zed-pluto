@@ -1,3 +1,17 @@
-IF temp > 50 THEN
-  action()
+# This is a PLUTO test file
+
+PROCEDURE check_temperature
+  # Check if temperature is too high
+  IF temperature > 50 THEN
+    shutdown()
+    LOG "temperature exceeded threshold"
+  ELSE
+    LOG "temperature normal"
+  END
+END
+
+PROCEDURE activate_sequence
+  IF signal > 0 THEN
+    initiate()
+  END
 END

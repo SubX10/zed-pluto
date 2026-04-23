@@ -1,19 +1,73 @@
 module.exports = grammar({
   name: "pluto",
 
+  extras: ($) => [
+    /\s/,
+    $.comment,
+  ],
+
   rules: {
-    source_file: ($) => repeat($._statement),
+    source_file: ($) => repeat($._top_level),
 
-    _statement: ($) => choice($.if_statement, $.command),
+    _top_level: ($) => choice(
+      $.procedure_definition,
+      $._statement,
+    ),
 
-    if_statement: ($) =>
-      seq("IF", $.condition, "THEN", repeat($._statement), "END"),
+    procedure_definition: ($) => seq(
+      "PROCEDURE",
+      $.identifier,
+      repeat($._statement),
+      "END"
+    ),
 
-    condition: ($) => seq($.identifier, ">", $.number),
+    _statement: ($) => choice(
+      $.if_statement,
+      $.log_statement,
+      $.command,
+    ),
 
-    command: ($) => seq($.identifier, "(", ")"),
+    if_statement: ($) => seq(
+      "IF",
+      $.condition,
+      "THEN",
+      repeat($._statement),
+      optional(seq(
+        "ELSE",
+        repeat($._statement),
+      )),
+      "END"
+    ),
 
-    identifier: ($) => /[a-zA-Z_]+/,
-    number: ($) => /\d+/,
+    log_statement: ($) => seq(
+      "LOG",
+      $.string,
+    ),
+
+    condition: ($) => seq(
+      $.identifier,
+      $.operator,
+      $.number,
+    ),
+
+    operator: ($) => choice(">", "<", "=", ">=", "<=", "!="),
+
+    command: ($) => seq(
+      $.identifier,
+      "(",
+      ")"
+    ),
+
+    comment: ($) => token(seq("#", /.*/)),
+
+    string: ($) => seq(
+      '"',
+      /[^"]*/,
+      '"'
+    ),
+
+    identifier: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
+
+    number: ($) => /\d+(\.\d+)?/,
   },
 });
