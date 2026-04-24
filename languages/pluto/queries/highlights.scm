@@ -5,6 +5,8 @@
 "ELSE" @keyword
 "END" @keyword
 "LOG" @keyword
+"CON" @keyword
+"CONT" @keyword
 
 ; Operators
 (operator) @operator

@@ -23,7 +23,9 @@ module.exports = grammar({
 
     _statement: ($) => choice(
       $.if_statement,
+      $.con_statement,
       $.log_statement,
+      $.cont_statement,
       $.command,
     ),
 
@@ -38,6 +40,14 @@ module.exports = grammar({
       )),
       "END"
     ),
+
+    con_statement: ($) => seq(
+      "CON",
+      $.condition,
+      repeat($._statement),
+    ),
+
+    cont_statement: ($) => "CONT",
 
     log_statement: ($) => seq(
       "LOG",

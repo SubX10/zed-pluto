@@ -15,3 +15,14 @@ PROCEDURE activate_sequence
     initiate()
   END
 END
+
+PROCEDURE monitor_pressure
+  # CON block - execute if condition is true
+  CON pressure > 100
+    release_valve()
+    LOG "pressure released"
+  CONT
+
+  # Continue normal operations
+  LOG "pressure check complete"
+END
