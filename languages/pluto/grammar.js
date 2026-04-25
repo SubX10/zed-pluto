@@ -11,6 +11,8 @@ module.exports = grammar({
 
     _top_level: ($) => choice(
       $.procedure_definition,
+      $.structs_definition,
+      $.operator_definition,
       $._statement,
     ),
 
@@ -18,6 +20,20 @@ module.exports = grammar({
       "PROCEDURE",
       $.identifier,
       repeat($._statement),
+      "END"
+    ),
+
+    structs_definition: ($) => seq(
+      "STRUCTS",
+      $.identifier,
+      repeat($.identifier),
+      "END"
+    ),
+
+    operator_definition: ($) => seq(
+      "OPERATOR",
+      $.identifier,
+      repeat($.condition),
       "END"
     ),
 

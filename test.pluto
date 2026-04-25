@@ -1,5 +1,19 @@
 # This is a PLUTO test file
 
+# Define data structures
+STRUCTS telemetry
+  temperature
+  pressure
+  signal
+END
+
+# Define custom operator
+OPERATOR check_vitals
+  temperature > 0
+  pressure > 0
+  signal > 0
+END
+
 PROCEDURE check_temperature
   # Check if temperature is too high
   IF temperature > 50 THEN

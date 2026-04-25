@@ -7,6 +7,8 @@
 "LOG" @keyword
 "CON" @keyword
 "CONT" @keyword
+"STRUCTS" @keyword
+"OPERATOR" @keyword
 
 ; Operators
 (operator) @operator
